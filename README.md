@@ -2,14 +2,18 @@
 
 Constitutional governance for stacked-persona and multi-agent AI systems.
 
-CoSyn is a **behavioral governance layer**, not another agent framework.
+CoSyn is a **behavioral governance layer**, not another agent framework or SDK.
 It defines how AI personas behave, how they are routed, and how drift is detected and constrained.
+
+CoSyn is written as a **vendor-agnostic governance spec**: the same constitution can be adopted across independent stacks or organizations, providing a shared rulebook for multi-agent systems without depending on a single platform, including decentralized or other multi-party environments.
+
+As systems grow, the same constitution can be applied across many personas, teams, and deployments, giving organizations a **repeatable governance substrate** and a consistent way to surface drift, risk, and audit trails, suitable for regulated or other high-stakes contexts.
 
 ---
 
 ## One sentence
 
-CoSyn is a **governance constitution + stacked-governance packaging** that lets you run many AI personas in one system with clear boundaries, auditability, and repeatable behavior.
+CoSyn is a **governance constitution + stacked-governance packaging** that lets you run growing numbers of AI personas in one system with clear boundaries, auditability, and repeatable behavior—across tools, teams, and deployments.
 
 ---
 
@@ -25,7 +29,7 @@ CoSyn is a **governance constitution + stacked-governance packaging** that lets 
   * stacked-persona projects
   * project-file persona sets
   * GPT / LLM systems that load persona instruction files.
-    Public beta, open to community testing and feedback.
+    v9 is published as a **public beta specification**, open to community testing and feedback.
 
 All contents in this repository are released under the **MIT license**.
 
@@ -46,6 +50,8 @@ This file is the **full CoSyn governance constitution**:
 
 If you want to **understand CoSyn**, start here.
 If you are building your own implementation, this is the **normative source of truth**.
+
+Because it is tool- and vendor-agnostic, the v8.4.1 constitution can be used as a **shared governance specification** across multiple systems, organizations, or agent frameworks.
 
 ---
 
@@ -76,7 +82,7 @@ The v9 spec is labeled **beta** so changes can be made in response to real-world
 
 * **You are doing governance research, audits, or policy work**
   → Read **`CoSyn_Governance_Constitution_v8.4.1_Full.md`**
-  (the constitution is the artifact that should be cited in papers and governance docs).
+  (the constitution is the artifact that should be cited in papers and governance docs, and can serve as a common reference across tools or organizations).
 
 * **You are a developer wiring CoSyn into a project or framework**
   → Start with **`v9-modular/GOVERNANCE.md`**
@@ -89,7 +95,7 @@ The v9 spec is labeled **beta** so changes can be made in response to real-world
 This repository provides **specifications**, not an SDK or runtime library.
 Implementers are responsible for applying the governance rules within their own codebases and frameworks.
 
-* **You need to prove what v8.4.1 means**
+* **You need to prove what v8.4.1 means in a concrete system**
   → Use both:
 
   * the constitution file (behavioral guarantees), and
@@ -99,26 +105,25 @@ Implementers are responsible for applying the governance rules within their own 
 
 ## Typical use cases
 
-CoSyn is **framework-agnostic**. It is designed to be implemented **under** your existing tools, including (for example):
+CoSyn is **framework-agnostic**. It is designed to be implemented **under** existing tools, including (for example):
 
 * LangChain or LlamaIndex–based pipelines
 * custom multi-agent / orchestrator code
 * GPTs or local LLMs with many specialized personas
 * internal AI “C-Suite” or expert teams
 
-This repository does **not** provide ready-made integrations or SDKs.
+You keep your current tools.
 
-Instead, it gives you:
+CoSyn provides:
 
 * a **constitution** for how agents/personas should behave (v8.4.1), and
 * a **stacked governance specification** for how they should be routed and audited (v9-modular).
 
-You keep your current tools.
-You implement CoSyn as the governance layer that:
+Because the same constitution can be applied across many personas and deployments, organizations can:
 
-* constrains behavior,
-* structures persona boundaries, and
-* defines how drift and misuse should be detected and surfaced.
+* run multiple AI roles or agents with **consistent governance**,
+* detect and surface drift using a shared protocol stack,
+* and align internal teams, vendors, or business units on **one written rulebook** instead of ad-hoc, tool-specific behavior.
 
 ---
 
@@ -133,7 +138,7 @@ The open-source parts in this repo are intended to stay:
 Planned additions (all optional, separate from this repo):
 
 * example persona files + registry format
-* minimal routing script for stacked personas
+* minimal routing patterns for stacked personas (spec or pseudo-code)
 * conceptual integration notes for common Python agent frameworks
 
 Closed/commercial work (not in this repo):
