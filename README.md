@@ -141,6 +141,12 @@ Planned additions (all optional, separate from this repo):
 * minimal routing patterns for stacked personas (spec or pseudo-code)
 * conceptual integration notes for common Python agent frameworks
 
+Related Demonstration
+
+ * A minimal, runnable proof-of-concept demonstrating governance enforcement at runtime is available here:
+       [link to cosyn-rwas-demo]
+
+
 Closed/commercial work (not in this repo):
 
 * enterprise audit dashboards and drift logs
