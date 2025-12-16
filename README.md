@@ -1,3 +1,31 @@
+## Scope & Contribution Policy
+
+This repository contains the canonical specification of the CoSyn Governance Stack.
+
+This repository is published for:
+- inspection,
+- interpretation,
+- discussion, and
+- reference use.
+
+This repository is **not**:
+- a framework,
+- an SDK,
+- a reference implementation,
+- a collaborative standards effort.
+
+### Change Policy
+Pull requests are not accepted.
+
+Issues may be opened for:
+- questions,
+- clarification requests, or
+- discussion of interpretation.
+
+Any future changes to CoSyn governance occur only through
+explicit versioned releases authored by the maintainers.
+
+
 # CoSyn Governance Stack
 
 Constitutional governance for stacked-persona and multi-agent AI systems.
