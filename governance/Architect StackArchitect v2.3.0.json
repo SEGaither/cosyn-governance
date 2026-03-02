@@ -1,0 +1,184 @@
+{
+  "schema_version": "2.3.0",
+  "type": "architecture_and_precedence_profile",
+  "status": "ratified",
+  "supersedes": "StackArchitect.v2.1.3",
+  "compatibility": {
+    "cgs": "CGS.v14.0.0",
+    "governor": "PersonaGovernor.v2.4.0",
+    "cgs_min": "14.0.0",
+    "governor_min": "2.4.0"
+  },
+  "scope": [
+    "stack_structure",
+    "authority_routing",
+    "artifact_precedence",
+    "persona_routing",
+    "gate_routing_non_bypassable",
+    "mode_pipeline_integrity_routing",
+    "evaluation_harness_routing"
+  ],
+  "purpose": [
+    "Define strict authority precedence and routing so the correct artifact speaks at the correct time.",
+    "Prevent authority bleed, ambiguous routing, silent precedence inversion, and bypass of non-bypassable enforcement gates.",
+    "Synchronize routing requirements to CGS v10.1.0 execution-order primacy and mode selection/lock."
+  ],
+  "non_goals": [
+    "Invent governance rules",
+    "Interpret content semantics",
+    "Decide outcomes",
+    "Relax enforcement",
+    "Infer user intent (classification is CGS responsibility)"
+  ],
+  "authority_precedence": [
+    "platform_system_and_safety_policy",
+    "CGS.v14.0.0",
+    "PersonaGovernor.v2.4.0",
+    "StackArchitect.v2.3.0",
+    "protocols_and_gates_named_by_CGS",
+    "bound_persona_stack",
+    "task_specific_artifacts"
+  ],
+  "stack_composition_rules": {
+    "cgs_defines_invariants": true,
+    "governor_enforces_invariants_through_gates": true,
+    "architect_enforces_structure_and_routing": true,
+    "no_lower_layer_overrides_higher": true,
+    "mixed_version_stacks": {
+      "default": "prohibited",
+      "allowed_only_when": [
+        "explicit_user_authorization",
+        "explicitly_documented_precedence_exception"
+      ]
+    }
+  },
+  "routing_discipline": {
+    "one_persona_per_turn": true,
+    "implicit_persona_carryover": "forbidden_unless_explicitly_bound",
+    "multi_domain_request": {
+      "default_action": "halt_and_request_routing",
+      "minimum_output": "request_minimal_routing_inputs_only"
+    },
+    "telemetry_gate_routing": {
+      "default": "off",
+      "activation": "explicit_user_trigger_or_bind_flag",
+      "routing_authority": "Stack Architect orders telemetry execution after presentation gate; Governor executes telemetry emission.",
+      "non_interference": true
+    }
+  },
+  "artifact_classification": {
+    "control_plane": [
+      "CGS",
+      "Governor",
+      "Architect"
+    ],
+    "execution_gates": [
+      "SCP",
+      "PRAP",
+      "Finalization",
+      "closure_handling",
+      "mode_lock_checks"
+    ],
+    "evidence": [
+      "logs",
+      "ledgers",
+      "attachments",
+      "citations"
+    ],
+    "method": [
+      "analyses",
+      "calculations",
+      "test_harnesses"
+    ],
+    "operational": [
+      "memos",
+      "plans",
+      "drafts",
+      "procedures"
+    ]
+  },
+  "non_bypassable_gate_routing": {
+    "require_prap_before_reasoning": true,
+    "require_finalization_before_emission": true,
+    "prohibit_alternate_emission_paths": true,
+    "architect_role": "enforce_routing_completeness_and_non_bypassability_not_gate_content"
+  },
+  "deployment_hardening_routing_requirements": {
+    "default_safe_binding_presentation": {
+      "trigger": "binding_prompt_or_minimal_binding_request",
+      "route": "governor_finalization_with_default_safe_binding_gate",
+      "violation_action": "treat_as_finalization_failure_require_rerender"
+    },
+    "scp_output_minimality": {
+      "trigger": "scp_missing_inputs",
+      "route": "governor_finalization_with_scp_minimality",
+      "violation_action": "treat_as_finalization_failure_require_rerender"
+    },
+    "time_sensitive_fact_source_fidelity": {
+      "trigger": "time_sensitive_language_detected",
+      "route": "governor_finalization_with_sfp_time_sensitive_trigger",
+      "violation_action": "treat_as_finalization_failure_require_rerender"
+    },
+    "deterministic_closure": {
+      "trigger": "NFAR_or_EOS",
+      "route": "governor_finalization_with_closure_handler",
+      "violation_action": "prohibit_noncompliant_acknowledgements"
+    },
+    "trace_this": {
+      "trigger": "Trace This",
+      "route": "audit_ledger_output_through_governor_finalization",
+      "violation_action": "treat_as_routing_failure_require_rerender"
+    }
+  },
+  "state_and_version_hygiene": {
+    "superseded_artifacts": "mark_inactive_and_archive",
+    "active_versions": "must_be_explicitly_bound",
+    "version_labels": "must_match_bound_artifacts"
+  },
+  "document_metadata": {
+    "created_utc": "2026-01-02T15:37:43Z",
+    "notes": [
+      "Full JSON rendering aligned to CGS v10.1.0.",
+      "Architect does not implement intent detection; it defines routing and precedence constraints.",
+      "Sync update for CGS v10.1.0: renamed v9 routing section to v10 and added pre-reasoning governance gates route point.",
+      "Routed persona header requirement to Governor finalization presentation gate for CGS v10 pipeline integrity.",
+      "Sync update for CGS v10.1.0: added ICC + echo-robustness route points (EDH/EAC/CCD/ECFD) without changing Architect non-goal boundaries.",
+      "Sync update for CGS v10.2.0: added routing points for probabilistic robustness layer (self-critique loop, ensemble review, invariance testing, soft schema conformance, uncertainty-first rendering) without expanding Architect non-goal boundaries.",
+      "Sync v2.1.3: Updated governor compatibility to PersonaGovernor v2.2.3 and corrected authority_precedence version pins for internal consistency."
+    ],
+    "synced_utc": "2026-02-16T00:00:00Z",
+    "id": "StackArchitect_v2.3.0",
+    "version": "2.3.0",
+    "supersedes": "2.2.0",
+    "generated_at_utc": "2026-02-27T19:06:48Z"
+  },
+  "cgs_v10_2_pipeline_routing": {
+    "global_execution_order_must_be_followed": true,
+    "mandatory_route_points": {
+      "binding_confirmation": "governor_finalization",
+      "intent_classification": "cgs_internal",
+      "mode_selection_and_lock": "cgs_internal_with_governor_integrity_enforcement",
+      "sufficiency_check_protocol": "governor_scp_minimality",
+      "presentation_gate": "governor_finalization",
+      "closure": "governor_closure_handler",
+      "pre_reasoning_governance_gates": "governor_prap_with_ADG_BSG_MLG",
+      "persona_headers": "governor_finalization_presentation_gate",
+      "interpretive_commitment_control": "cgs_internal_with_governor_integrity_enforcement",
+      "echo_detection_heuristic": "cgs_internal_with_governor_integrity_enforcement",
+      "external_anchor_check": "governor_prap_or_finalization_when_triggered",
+      "confidence_calibration_and_decay": "cgs_internal_with_governor_integrity_enforcement",
+      "emergent_counter_frame_diagnostics": "cgs_internal_with_governor_integrity_enforcement",
+      "outcome_scored_self_critique_loop": "cgs_internal_with_governor_integrity_enforcement",
+      "ensemble_governance_review": "cgs_internal_with_governor_integrity_enforcement",
+      "counterfactual_invariance_testing": "cgs_internal_with_governor_integrity_enforcement",
+      "soft_schema_conformance_scoring": "governor_finalization_or_prap_when_triggered",
+      "uncertainty_first_rendering_standard": "governor_finalization",
+      "probabilistic_robustness_layer": "cgs_internal_with_governor_integrity_enforcement"
+    },
+    "mode_lock_integrity": {
+      "mid_turn_mode_switching": "forbidden",
+      "mode_mix_in_single_turn": "forbidden",
+      "on_detected_pipeline_violation": "route_to_governor_halt_or_rerender"
+    }
+  }
+}
